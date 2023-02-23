@@ -52,7 +52,7 @@ body {
 }
 
 /* Cabeçalho */
-header {
+header#cabecalho {
     position: fixed;
     z-index: 999;
     top: 0;
@@ -174,7 +174,7 @@ header {
     display: none;
 }
 
-#alterar-tema:checked + .fa-circle-half-stroke.mover-controle {
+#alterar-tema:checked+.fa-circle-half-stroke.mover-controle {
     transform: translateX(24px);
     left: 0;
     right: 2px;
@@ -182,13 +182,22 @@ header {
 
 /* Fontes - Tipografias */
 h1 {
-    font-size: 4.125rem; /* font-size: 2rem; */
+    font-size: 4.125rem;
+    /* font-size: 2rem; */
     text-align: center;
+    /* font-weight: 400; */
     font-family: "Ubuntu", sans-serif;
-    font-weight: 400;
     text-transform: capitalize;
-    color: #fafafa;
     margin-bottom: 15px;
+    /* Aplica imagem de fundo no título */
+    background-image: linear-gradient(to right, rgb(221, 75, 37), rgb(0, 109, 180), rgb(236, 197, 11));
+    color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -ms-background-clip: text;
+    -o-background-clip: text;
+    background-clip: text;
+    background-position: center center;
 }
 
 h1::after {
@@ -200,31 +209,36 @@ h1::after {
 }
 
 @keyframes digitando {
+
     0%,
     100% {
         opacity: 0;
     }
+
     50% {
         opacity: 1;
     }
 }
 
 h2 {
-    font-size: 1.85rem; /* font-size: 1.5rem; */
+    font-size: 1.85rem;
+    /* font-size: 1.5rem; */
     font-family: "Ubuntu Condensed", sans-serif;
     font-weight: 400;
     color: #006db4;
 }
 
 h3 {
-    font-size: 1.325rem; /* font-size: 1.17rem; */
+    font-size: 1.325rem;
+    /* font-size: 1.17rem; */
     font-family: "Ubuntu Condensed", sans-serif;
     font-weight: 400;
     color: #006db4;
 }
 
 h4 {
-    font-size: 1.218rem; /* font-size: 1rem; */
+    font-size: 1.218rem;
+    /* font-size: 1rem; */
     font-family: "Ubuntu Condensed", sans-serif;
     font-weight: 400;
     color: #006db4;
@@ -260,6 +274,8 @@ p {
     bottom: 0;
     right: 0;
     background-image: linear-gradient(to top, rgba(221, 75, 37, 0.1), rgba(236, 197, 11, 0.2), rgba(0, 109, 180, 0.3));
+    -webkit-backdrop-filter: grayscale(90%);
+    backdrop-filter: grayscale(90%); 
 }
 
 main #fundo-animado #introducao {
@@ -274,7 +290,7 @@ main #fundo-animado #introducao {
     z-index: 1;
 }
 
-#introducao h1 + p {
+#introducao h1+p {
     color: #fafafa;
     font-size: 1.25rem;
 }
@@ -294,15 +310,15 @@ main #fundo-animado #introducao {
     background-color: rgba(250, 250, 250, 0.8);
 }
 
-main > div:nth-of-type(odd) {
+main>div:nth-of-type(odd) {
     background-color: var(--__cor-fundo);
 }
 
-main > div:nth-of-type(even) {
+main>div:nth-of-type(even) {
     background-color: inherit;
 }
 
-main > div {
+main>div {
     padding: 0 15px;
 }
 
@@ -326,12 +342,12 @@ section h2::after {
     content: "";
     display: block;
     width: 40px;
-    height: 2px;
+    height: 3px;
     background-color: currentColor;
     margin: 15px auto;
 }
 
-section h2 + p {
+section h2+p {
     max-width: 480px;
     margin: 0 auto 15px auto;
     text-align: center;
@@ -359,13 +375,13 @@ section h2 + p {
     margin-bottom: 15px;
 }
 
-#sobre article > div:nth-child(2) {
+#sobre article>div:nth-child(2) {
     width: calc(480px - 20px);
     margin: 0 10px;
     float: left;
 }
 
-#sobre article div:nth-child(2) > p {
+#sobre article div:nth-child(2)>p {
     margin-bottom: 15px;
 }
 
@@ -408,26 +424,26 @@ section h2 + p {
     padding-bottom: 6px;
 }
 
-/* Serviços */
-#servicos article .itens-servicos {
+/* Experiência */
+#experiencia article .itens-servicos {
     width: calc(320px - 20px);
-    margin: 0 10px;
+    margin: 0 10px 15px 10px;
     float: left;
 }
 
-#servicos article .itens-servicos::before,
-#servicos article .itens-servicos::after {
+#experiencia article .itens-servicos::before,
+#experiencia article .itens-servicos::after {
     content: "";
     display: table;
     clear: both;
 }
 
-#servicos article .itens-servicos h3 {
+#experiencia article .itens-servicos h3 {
     text-align: center;
     margin-bottom: 15px;
 }
 
-#servicos article .itens-servicos h3::before {
+#experiencia article .itens-servicos h3::before {
     content: "";
     display: block;
     width: 80px;
@@ -439,21 +455,23 @@ section h2 + p {
     background-color: currentColor;
 }
 
-#servicos article .itens-servicos:nth-of-type(1) h3 {
+#experiencia article .itens-servicos:nth-of-type(1) h3 {
     color: #dd4b25;
 }
 
-#servicos article .itens-servicos:nth-of-type(2) h3 {
+#experiencia article .itens-servicos:nth-of-type(2) h3 {
     color: #006db4;
 }
 
-#servicos article .itens-servicos:nth-of-type(3) h3 {
+#experiencia article .itens-servicos:nth-of-type(3) h3 {
     color: #ecc50b;
 }
 
-#servicos article .itens-servicos picture {
+#experiencia article .itens-servicos picture {
     float: left;
     margin-right: 6px;
+    padding: 6px;
+    box-shadow: 5px 2px 6px rgba(10, 10, 10, 0.3);
 }
 
 /* Contato */
@@ -690,6 +708,7 @@ footer {
     from {
         top: -5px;
     }
+
     to {
         top: 5px;
     }
@@ -825,21 +844,25 @@ footer {
     }
 
     #sobre,
-    #servicos,
+    #experiencia,
     #contato {
         max-width: 540px !important;
     }
 
-    #sobre article > div:first-of-type {
+    #sobre article>div:first-of-type {
         width: calc(100% - 20px);
         margin-bottom: 15px;
     }
 
-    #sobre article > div:last-of-type {
+    #sobre article>div:last-of-type {
         width: calc(100% - 20px);
     }
 
-    #servicos article .itens-servicos {
+    .perguntas-frequentes .ler {
+        padding: 6px 0;
+    }
+
+    #experiencia article .itens-servicos {
         width: calc(100% - 20px);
         margin-bottom: 15px;
     }
@@ -864,7 +887,7 @@ footer {
         text-align: center;
     }
 
-     #rodape #logotipo-rodape{
+    #rodape #logotipo-rodape {
         float: none;
         clear: right;
         margin: 0 auto;
@@ -885,21 +908,21 @@ footer {
     }
 
     #sobre,
-    #servicos,
+    #experiencia,
     #contato {
         max-width: 720px;
     }
 
-    #sobre article > div:first-of-type {
+    #sobre article>div:first-of-type {
         width: calc(360px - 20px);
         margin-bottom: 15px;
     }
 
-    #sobre article > div:last-of-type {
+    #sobre article>div:last-of-type {
         width: calc(360px - 20px);
     }
 
-    #servicos article .itens-servicos {
+    #experiencia article .itens-servicos {
         width: calc(240px - 20px);
         margin-bottom: 15px;
     }
