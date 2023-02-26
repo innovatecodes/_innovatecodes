@@ -1,4 +1,4 @@
-// Debounce do Lodash
+// Debounce do Lodash...
 const debounce = function (func, wait, immediate) {
   let timeout;
   return function (...args) {
@@ -14,7 +14,7 @@ const debounce = function (func, wait, immediate) {
   };
 };
 
-// Animar ao fazer a rolagem suave
+// Animar ao fazer a rolagem suave...
 const elementos = document.querySelectorAll("[data-animar]");
 const animar = "animar";
 
@@ -50,7 +50,7 @@ if (elementos.length) {
   );
 }
 
-// Efeito rolagem suave
+// Efeito rolagem suave...
 function rolagemSuave() {
   const obterHTML = document.querySelector("html");
   const topo = obterHTML.offsetTop;
@@ -60,9 +60,8 @@ function rolagemSuave() {
 }
 document.querySelector("#fa-angles-up").addEventListener("click", rolagemSuave);
 
-/* Navegação interna primária */
+// Navegação interna primária...
 const attr = {
-<<<<<<< HEAD
   fechar: "Fechar menu",
   abrir: "Abrir menu",
   expandido: "aria-expanded",
@@ -70,22 +69,11 @@ const attr = {
   _etiqueta: "aria-label",
   _falso: false,
   _verdadeiro: true,
-};
-=======
-    fechar: "Fechar menu",
-    abrir: "Abrir menu",
-    expandido: "aria-expanded",
-    pressionado: "aria-pressed",
-    _etiqueta: "aria-label",
-    _falso: false,
-    _verdadeiro: true,
 }
->>>>>>> bac5c79d88d546c8d46364864da8acc962c17568
 
 function menu(event) {
   const obterNavegacao = document.getElementById("navegacao-interna");
 
-<<<<<<< HEAD
   if (event.type === "touchstart") {
     event.preventDefault();
   }
@@ -95,73 +83,33 @@ function menu(event) {
     event.currentTarget.setAttribute(attr.expandido, attr._verdadeiro);
     event.currentTarget.setAttribute(attr.pressionado, attr._verdadeiro);
     event.currentTarget.setAttribute(attr._etiqueta, attr.fechar);
+
   } else {
-    obterNavegacao.classList.remove("hamburguer-ativo");
+    obterNavegacao.classList.remove("hamburguer-ativo")
     event.currentTarget.setAttribute(attr.expandido, attr._falso);
     event.currentTarget.setAttribute(attr.pressionado, attr._falso);
     event.currentTarget.setAttribute(attr._etiqueta, attr.abrir);
   }
-=======
-    if (event.type === "touchstart") {
-        event.preventDefault();
-    }
-    
-    if (Boolean(obterNavegacao.className) === false && false == 0) {
-        obterNavegacao.classList.add("hamburguer-ativo");
-        event.currentTarget.setAttribute(attr.expandido, attr._verdadeiro);
-        event.currentTarget.setAttribute(attr.pressionado, attr._verdadeiro);
-        event.currentTarget.setAttribute(attr._etiqueta, attr.fechar);
 
-    } else {
-        obterNavegacao.classList.remove("hamburguer-ativo")
-        event.currentTarget.setAttribute(attr.expandido, attr._falso);
-        event.currentTarget.setAttribute(attr.pressionado, attr._falso);
-        event.currentTarget.setAttribute(attr._etiqueta, attr.abrir);
-    }
->>>>>>> bac5c79d88d546c8d46364864da8acc962c17568
 }
 document.getElementById("hamburguer").addEventListener("click", menu);
 document.getElementById("hamburguer").addEventListener("touchstart", menu);
 
-// Fechar navegação ao clicar no link
+// Fechar navegação ao clicar no link...
 let links = document.querySelectorAll("a[href$='/'], a[href^='#'");
-<<<<<<< HEAD
-
 // Converte HTMLCollectionOf para Array
 links = Array.from(links);
 
 links.forEach(function (link) {
   link.addEventListener("click", (event) => {
     menu(event);
-    document
-      .getElementById("hamburguer")
-      .setAttribute(attr.expandido, attr._falso);
-    document
-      .getElementById("hamburguer")
-      .setAttribute(attr.pressionado, attr._falso);
-    document
-      .getElementById("hamburguer")
-      .setAttribute(attr._etiqueta, attr.abrir);
-  });
-});
-
-// Efeito máquina de escrever
-=======
-
-// Converte HTMLCollectionOf para Array
-links = Array.from(links);
-
-links.forEach(function (link) {
-    link.addEventListener("click", (event) => {
-        menu(event);
-        document.getElementById("hamburguer").setAttribute(attr.expandido, attr._falso);
-        document.getElementById("hamburguer").setAttribute(attr.pressionado, attr._falso);
-        document.getElementById("hamburguer").setAttribute(attr._etiqueta, attr.abrir);
-    })
+    document.getElementById("hamburguer").setAttribute(attr.expandido, attr._falso);
+    document.getElementById("hamburguer").setAttribute(attr.pressionado, attr._falso);
+    document.getElementById("hamburguer").setAttribute(attr._etiqueta, attr.abrir);
+  })
 })
 
-// Efeito máquina de escrever 
->>>>>>> bac5c79d88d546c8d46364864da8acc962c17568
+// Efeito máquina de escrever...
 const obterH1 = document.querySelector("h1");
 
 function digitando(element) {
@@ -176,7 +124,7 @@ function digitando(element) {
 }
 digitando(obterH1);
 
-// Ano atual e data de criação
+// Ano atual e data de criação...
 const dataAtual = new Date();
 const anoAtual = dataAtual.getFullYear();
 const obterAnoAtual = document.getElementById("ano-atual");
@@ -186,21 +134,14 @@ obterTime.dateTime = 2022;
 obterTime.textContent = 2022;
 
 function ano() {
-<<<<<<< HEAD
-  return (obterAnoAtual.innerHTML = anoAtual);
-}
-window.addEventListener("load", (event) => {
-  ano();
-});
-=======
-    return obterAnoAtual.innerHTML = anoAtual;
+
+  return obterAnoAtual.innerHTML = anoAtual;
 }
 window.addEventListener("load", event => {
-    ano();
+  ano();
 })
->>>>>>> bac5c79d88d546c8d46364864da8acc962c17568
 
-// Alterar tema
+// Alterar tema...
 const alterarModoTema = document.getElementById("alterar-tema");
 const obterControle = document.querySelector(".fa-circle-half-stroke");
 const raiz = document.querySelector(":root");
@@ -212,31 +153,17 @@ if (sessionStorage.getItem("mode") == "dark") {
 }
 
 function alterarModoEscuro() {
-  raiz.classList.add("modo-claro"); //Adiciona a classe no html - :root
-  alterarModoTema.checked = true; //Configura o checkbox para (true)
-  sessionStorage.setItem("mode", "dark"); //Armazena um nome e valor para saber que o modo escuro está ativo
+  raiz.classList.add("modo-claro"); // Adiciona a classe no html - :root
+  alterarModoTema.checked = true; // Configura o checkbox para (true)
+  sessionStorage.setItem("mode", "dark"); // Armazena um nome e valor para saber que o modo escuro está ativo
   obterControle.classList.add("mover-controle");
 }
 
 function alterarModoClaro() {
-  raiz.classList.remove("modo-claro"); //Remove a classe no html - :root
-  alterarModoTema.checked = false; //Seta o checkbox para (false)
-  sessionStorage.setItem("mode", "light"); //Armazena um nome e valor para saber que o modo claro está ativo
+  raiz.classList.remove("modo-claro"); // Remove a classe no html - :root
+  alterarModoTema.checked = false; // Seta o checkbox para (false)
+  sessionStorage.setItem("mode", "light"); // Armazena um nome e valor para saber que o modo claro está ativo
   obterControle.classList.remove("mover-controle");
-}
-
-function alterarModoEscuro() {
-    raiz.classList.add("modo-claro"); //Adiciona a classe no html - :root
-    alterarModoTema.checked = true; //Configura o checkbox para (true)
-    sessionStorage.setItem("mode", "dark"); //Armazena um nome e valor para saber que o modo escuro está ativo
-    obterControle.classList.add("mover-controle");
-}
-
-function alterarModoClaro() {
-    raiz.classList.remove("modo-claro");  //Remove a classe no html - :root
-    alterarModoTema.checked = false; //Seta o checkbox para (false)
-    sessionStorage.setItem("mode", "light"); //Armazena um nome e valor para saber que o modo claro está ativo
-    obterControle.classList.remove("mover-controle");
 }
 
 //Se o estado do checkbox for mudado, executa a função
@@ -249,7 +176,7 @@ alterarModoTema.addEventListener("change", function () {
   }
 });
 
-// Perguntas frequentes
+// Perguntas frequentes...
 const ler = document.querySelectorAll(".ler");
 
 ler.forEach(function (elementoAtual) {
