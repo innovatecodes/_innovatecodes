@@ -121,7 +121,7 @@ header#cabecalho {
     padding: 0 18px;
     position: relative;
     transition: 0.2s ease-in;
-    color: #4EC5F1;
+    color: var(--_cor);
 }
 
 #navegacao-interna ul li a:hover {
