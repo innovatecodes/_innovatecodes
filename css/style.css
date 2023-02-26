@@ -188,10 +188,17 @@ h1 {
     text-align: center;
     /* font-weight: 400; */
     font-family: "Ubuntu", sans-serif;
+<<<<<<< HEAD
     text-transform: uppercase;
     margin-bottom: 15px;
     /* Aplica imagem de fundo no título */
     background-image: linear-gradient(to bottom, rgb(221, 75, 37), rgb(0, 109, 180), rgb(236, 197, 11));
+=======
+    text-transform: capitalize;
+    margin-bottom: 15px;
+    /* Aplica imagem de fundo no título */
+    background-image: linear-gradient(to right, rgb(221, 75, 37), rgb(0, 109, 180), rgb(236, 197, 11));
+>>>>>>> bac5c79d88d546c8d46364864da8acc962c17568
     color: transparent;
     -webkit-background-clip: text;
     -moz-background-clip: text;

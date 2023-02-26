@@ -62,6 +62,7 @@ document.querySelector("#fa-angles-up").addEventListener("click", rolagemSuave);
 
 /* Navegação interna primária */
 const attr = {
+<<<<<<< HEAD
   fechar: "Fechar menu",
   abrir: "Abrir menu",
   expandido: "aria-expanded",
@@ -70,10 +71,21 @@ const attr = {
   _falso: false,
   _verdadeiro: true,
 };
+=======
+    fechar: "Fechar menu",
+    abrir: "Abrir menu",
+    expandido: "aria-expanded",
+    pressionado: "aria-pressed",
+    _etiqueta: "aria-label",
+    _falso: false,
+    _verdadeiro: true,
+}
+>>>>>>> bac5c79d88d546c8d46364864da8acc962c17568
 
 function menu(event) {
   const obterNavegacao = document.getElementById("navegacao-interna");
 
+<<<<<<< HEAD
   if (event.type === "touchstart") {
     event.preventDefault();
   }
@@ -89,12 +101,31 @@ function menu(event) {
     event.currentTarget.setAttribute(attr.pressionado, attr._falso);
     event.currentTarget.setAttribute(attr._etiqueta, attr.abrir);
   }
+=======
+    if (event.type === "touchstart") {
+        event.preventDefault();
+    }
+    
+    if (Boolean(obterNavegacao.className) === false && false == 0) {
+        obterNavegacao.classList.add("hamburguer-ativo");
+        event.currentTarget.setAttribute(attr.expandido, attr._verdadeiro);
+        event.currentTarget.setAttribute(attr.pressionado, attr._verdadeiro);
+        event.currentTarget.setAttribute(attr._etiqueta, attr.fechar);
+
+    } else {
+        obterNavegacao.classList.remove("hamburguer-ativo")
+        event.currentTarget.setAttribute(attr.expandido, attr._falso);
+        event.currentTarget.setAttribute(attr.pressionado, attr._falso);
+        event.currentTarget.setAttribute(attr._etiqueta, attr.abrir);
+    }
+>>>>>>> bac5c79d88d546c8d46364864da8acc962c17568
 }
 document.getElementById("hamburguer").addEventListener("click", menu);
 document.getElementById("hamburguer").addEventListener("touchstart", menu);
 
 // Fechar navegação ao clicar no link
 let links = document.querySelectorAll("a[href$='/'], a[href^='#'");
+<<<<<<< HEAD
 
 // Converte HTMLCollectionOf para Array
 links = Array.from(links);
@@ -115,6 +146,22 @@ links.forEach(function (link) {
 });
 
 // Efeito máquina de escrever
+=======
+
+// Converte HTMLCollectionOf para Array
+links = Array.from(links);
+
+links.forEach(function (link) {
+    link.addEventListener("click", (event) => {
+        menu(event);
+        document.getElementById("hamburguer").setAttribute(attr.expandido, attr._falso);
+        document.getElementById("hamburguer").setAttribute(attr.pressionado, attr._falso);
+        document.getElementById("hamburguer").setAttribute(attr._etiqueta, attr.abrir);
+    })
+})
+
+// Efeito máquina de escrever 
+>>>>>>> bac5c79d88d546c8d46364864da8acc962c17568
 const obterH1 = document.querySelector("h1");
 
 function digitando(element) {
@@ -139,11 +186,19 @@ obterTime.dateTime = 2022;
 obterTime.textContent = 2022;
 
 function ano() {
+<<<<<<< HEAD
   return (obterAnoAtual.innerHTML = anoAtual);
 }
 window.addEventListener("load", (event) => {
   ano();
 });
+=======
+    return obterAnoAtual.innerHTML = anoAtual;
+}
+window.addEventListener("load", event => {
+    ano();
+})
+>>>>>>> bac5c79d88d546c8d46364864da8acc962c17568
 
 // Alterar tema
 const alterarModoTema = document.getElementById("alterar-tema");
@@ -168,6 +223,20 @@ function alterarModoClaro() {
   alterarModoTema.checked = false; //Seta o checkbox para (false)
   sessionStorage.setItem("mode", "light"); //Armazena um nome e valor para saber que o modo claro está ativo
   obterControle.classList.remove("mover-controle");
+}
+
+function alterarModoEscuro() {
+    raiz.classList.add("modo-claro"); //Adiciona a classe no html - :root
+    alterarModoTema.checked = true; //Configura o checkbox para (true)
+    sessionStorage.setItem("mode", "dark"); //Armazena um nome e valor para saber que o modo escuro está ativo
+    obterControle.classList.add("mover-controle");
+}
+
+function alterarModoClaro() {
+    raiz.classList.remove("modo-claro");  //Remove a classe no html - :root
+    alterarModoTema.checked = false; //Seta o checkbox para (false)
+    sessionStorage.setItem("mode", "light"); //Armazena um nome e valor para saber que o modo claro está ativo
+    obterControle.classList.remove("mover-controle");
 }
 
 //Se o estado do checkbox for mudado, executa a função
