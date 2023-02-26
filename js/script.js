@@ -134,7 +134,6 @@ obterTime.dateTime = 2022;
 obterTime.textContent = 2022;
 
 function ano() {
-
   return obterAnoAtual.innerHTML = anoAtual;
 }
 window.addEventListener("load", event => {
@@ -185,3 +184,5 @@ ler.forEach(function (elementoAtual) {
     elementoAtual.classList.toggle("exibirResposta");
   });
 });
+
+

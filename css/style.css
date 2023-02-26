@@ -42,6 +42,23 @@ html {
   clear: both;
 }
 
+.planoFundoColorido{
+  /* Aplica background-image como fundo no título */
+  background-image: linear-gradient(
+    to bottom,
+    rgb(221, 75, 37),
+    rgb(0, 109, 180),
+    rgb(236, 197, 11)
+  );
+  color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -ms-background-clip: text;
+  -o-background-clip: text;
+  background-clip: text;
+  background-position: center center;
+}
+
 body {
   overflow-x: hidden;
   font-family: "Lato", sans-serif;
@@ -190,7 +207,15 @@ h1 {
   font-family: "Ubuntu", sans-serif;
   text-transform: uppercase;
   margin-bottom: 15px;
-  /* Aplica imagem de fundo no título */
+}
+
+h1::after {
+  content: "|";
+  display: inline-block;
+  margin-left: 6px;
+  opacity: 1;
+  animation: digitando 0.5s ease-in infinite;
+  /* Aplica background-image como fundo no elemento after */
   background-image: linear-gradient(
     to bottom,
     rgb(221, 75, 37),
@@ -204,14 +229,6 @@ h1 {
   -o-background-clip: text;
   background-clip: text;
   background-position: center center;
-}
-
-h1::after {
-  content: "|";
-  display: inline-block;
-  margin-left: 6px;
-  opacity: 1;
-  animation: digitando 0.5s ease-in infinite;
 }
 
 @keyframes digitando {
@@ -745,7 +762,7 @@ footer {
 /* Responsivo */
 @media (max-width: 767.98px) {
   h1 {
-    font-size: 2.65rem;
+    font-size: 2.25rem;
   }
 
   p {
@@ -847,10 +864,6 @@ footer {
 
   #fundo-animado {
     background-position: left center;
-  }
-
-  #fundo-animado #introducao {
-    max-width: 360px;
   }
 
   #sobre,
