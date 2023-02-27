@@ -85,12 +85,17 @@ const attr = {
 }
 
 // Fechar navegação no click...
-document.addEventListener("click", function (alvoAtual) {
-  if (Boolean(navegacao.className) === true && alvoAtual.target !== ul) {
+window.addEventListener("click", event => {
+  encerrarNavegacao(event);
+})
+
+function encerrarNavegacao(alvoAtual) {
+  if (Boolean(navegacao.className) === true && alvoAtual.target !== ul ) {
     navegacao.classList.remove("hamburguer-ativo");
+    ul.classList.remove("cover");
     attr.removerAttr(hamburguer);
   }
-})
+}
 
 function menu(event) {
   if (event.type === "touchstart") {
@@ -99,11 +104,11 @@ function menu(event) {
 
   if (Boolean(navegacao.className) === false && false == 0) {
     navegacao.classList.add("hamburguer-ativo");
+    ul.classList.add("cover");
     attr.adicionarAttr(event);
-
-
   } else {
     navegacao.classList.remove("hamburguer-ativo")
+    ul.classList.remove("cover");
     attr.removerAttr(event);
   }
 }

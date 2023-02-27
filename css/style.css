@@ -42,7 +42,7 @@ html {
   clear: both;
 }
 
-.planoFundoColorido{
+.planoFundoColorido {
   /* Aplica background-image como fundo no título */
   background-image: linear-gradient(
     to bottom,
@@ -71,7 +71,7 @@ body {
 /* Cabeçalho */
 header#cabecalho {
   position: fixed;
-  z-index: 999;
+  z-index: 2;
   top: 0;
   left: 0;
   width: 100%;
@@ -795,13 +795,26 @@ footer {
     left: 0;
     width: 260px;
     max-height: 100%;
-        min-height: 100vh;
+    min-height: 100vh;
     background-color: var(--_cor-fundo);
     visibility: hidden;
     overflow-y: hidden;
     transform: translate3d(-260px, 0, 0);
     transition: 0.2s ease-in;
     opacity: 0.9;
+  }
+
+  ul#menu.sobrepor > #sobrepor::after {
+    content: "";
+    display: block;
+    position: fixed;
+    width: 100vw;
+    /* min-height: 100vh; */
+    top: 0;
+    bottom: 0;
+    left: 260px;
+    background-color: var(--_cor-fundo);
+    opacity: 0.5;
   }
 
   #navegacao-interna ul li {
