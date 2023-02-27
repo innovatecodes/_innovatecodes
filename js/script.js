@@ -61,6 +61,8 @@ function rolagemSuave() {
 document.querySelector("#fa-angles-up").addEventListener("click", rolagemSuave);
 
 // Navegação interna primária...
+const navegacao = document.querySelector("header nav");
+const hamburguer = document.getElementById("hamburguer");
 const attr = {
   fechar: "Fechar menu",
   abrir: "Abrir menu",
@@ -69,28 +71,40 @@ const attr = {
   _etiqueta: "aria-label",
   _falso: false,
   _verdadeiro: true,
+  adicionarAttr() {
+    document.getElementById("hamburguer").setAttribute(attr.expandido, attr._verdadeiro);
+    document.getElementById("hamburguer").setAttribute(attr.pressionado, attr._verdadeiro);
+    document.getElementById("hamburguer").setAttribute(attr._etiqueta, attr.fechar);
+  },
+  removerAttr() {
+    document.getElementById("hamburguer").setAttribute(attr.expandido, attr._falso);
+    document.getElementById("hamburguer").setAttribute(attr.pressionado, attr._falso);
+    document.getElementById("hamburguer").setAttribute(attr._etiqueta, attr.abrir);
+  }
 }
 
-function menu(event) {
-  const obterNavegacao = document.getElementById("navegacao-interna");
+// Fechar navegação no click...
+document.addEventListener("click", function () {
+  if (Boolean(navegacao.className) === true) {
+    navegacao.classList.remove("hamburguer-ativo");
+    attr.removerAttr(hamburguer);
+  }
+})
 
+function menu(event) {
   if (event.type === "touchstart") {
-    event.preventDefault();
+    event.preventDefault(event);
   }
 
-  if (Boolean(obterNavegacao.className) === false && false == 0) {
-    obterNavegacao.classList.add("hamburguer-ativo");
-    event.currentTarget.setAttribute(attr.expandido, attr._verdadeiro);
-    event.currentTarget.setAttribute(attr.pressionado, attr._verdadeiro);
-    event.currentTarget.setAttribute(attr._etiqueta, attr.fechar);
+  if (Boolean(navegacao.className) === false && false == 0) {
+    navegacao.classList.add("hamburguer-ativo");
+    attr.adicionarAttr(event);
+
 
   } else {
-    obterNavegacao.classList.remove("hamburguer-ativo")
-    event.currentTarget.setAttribute(attr.expandido, attr._falso);
-    event.currentTarget.setAttribute(attr.pressionado, attr._falso);
-    event.currentTarget.setAttribute(attr._etiqueta, attr.abrir);
+    navegacao.classList.remove("hamburguer-ativo")
+    attr.removerAttr(event);
   }
-
 }
 document.getElementById("hamburguer").addEventListener("click", menu);
 document.getElementById("hamburguer").addEventListener("touchstart", menu);
@@ -103,9 +117,7 @@ links = Array.from(links);
 links.forEach(function (link) {
   link.addEventListener("click", (event) => {
     menu(event);
-    document.getElementById("hamburguer").setAttribute(attr.expandido, attr._falso);
-    document.getElementById("hamburguer").setAttribute(attr.pressionado, attr._falso);
-    document.getElementById("hamburguer").setAttribute(attr._etiqueta, attr.abrir);
+    attr.removerAttr(hamburguer);
   })
 })
 
