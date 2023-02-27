@@ -63,6 +63,7 @@ document.querySelector("#fa-angles-up").addEventListener("click", rolagemSuave);
 // Navegação interna primária...
 const navegacao = document.querySelector("header nav");
 const hamburguer = document.getElementById("hamburguer");
+const ul = document.getElementById("menu");
 const attr = {
   fechar: "Fechar menu",
   abrir: "Abrir menu",
@@ -84,8 +85,8 @@ const attr = {
 }
 
 // Fechar navegação no click...
-document.addEventListener("click", function () {
-  if (Boolean(navegacao.className) === true) {
+document.addEventListener("click", function (alvoAtual) {
+  if (Boolean(navegacao.className) === true && alvoAtual.target !== ul) {
     navegacao.classList.remove("hamburguer-ativo");
     attr.removerAttr(hamburguer);
   }
