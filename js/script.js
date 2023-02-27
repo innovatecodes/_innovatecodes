@@ -63,7 +63,7 @@ document.querySelector("#fa-angles-up").addEventListener("click", rolagemSuave);
 // Navegação interna primária...
 const navegacao = document.querySelector("header nav");
 const hamburguer = document.getElementById("hamburguer");
-const ul = document.getElementById("menu");
+
 const attr = {
   fechar: "Fechar menu",
   abrir: "Abrir menu",
@@ -84,19 +84,6 @@ const attr = {
   }
 }
 
-// Fechar navegação no click...
-window.addEventListener("click", event => {
-  encerrarNavegacao(event);
-})
-
-function encerrarNavegacao(alvoAtual) {
-  if (Boolean(navegacao.className) === true && alvoAtual.target !== ul ) {
-    navegacao.classList.remove("hamburguer-ativo");
-    ul.classList.remove("cover");
-    attr.removerAttr(hamburguer);
-  }
-}
-
 function menu(event) {
   if (event.type === "touchstart") {
     event.preventDefault(event);
@@ -104,11 +91,9 @@ function menu(event) {
 
   if (Boolean(navegacao.className) === false && false == 0) {
     navegacao.classList.add("hamburguer-ativo");
-    ul.classList.add("cover");
     attr.adicionarAttr(event);
   } else {
     navegacao.classList.remove("hamburguer-ativo")
-    ul.classList.remove("cover");
     attr.removerAttr(event);
   }
 }
