@@ -166,7 +166,7 @@ tema.addEventListener("change", function () {
 });
 
 // Perguntas frequentes...
-let ler = document.getElementsByTagName("dt");
+let ler = document.getElementsByTagName("dl");
 ler = Array.from(ler);
 const angulo = "angulo";
 const resposta = "resposta";
@@ -182,19 +182,19 @@ ler.forEach(function (elemento) {
   });
 });
 
-const perguntasFrequentes = function (dt) {
-  if (!dt.classList.contains(angulo, resposta)) {
-    dt.classList.add(angulo, resposta);
-    dt.setAttribute(attr.expandido, attr._verdadeiro);
-    const dd = dt.nextElementSibling;
+const perguntasFrequentes = function (elemento) {
+  if (!elemento.classList.contains(angulo, resposta)) {
+    elemento.classList.add(angulo, resposta);
+    elemento.setAttribute(attr.expandido, attr._verdadeiro);
+    const dd = elemento.nextElementSibling;
     if (dd) {
       dd.addEventListener("click", () => {
         dd.previousElementSibling.classList.remove(angulo, resposta);
       })
     }
   } else {
-    dt.classList.remove(angulo, resposta);
-    dt.setAttribute(attr.expandido, attr._falso);
+    elemento.classList.remove(angulo, resposta);
+    elemento.setAttribute(attr.expandido, attr._falso);
   }
 }
 

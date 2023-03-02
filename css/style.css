@@ -43,12 +43,11 @@ nav {
 
 @keyframes animar-logo {
   0% {
-    left: 0;
-    transform: rotateZ(-360deg);
+    left: calc(240px - 35px);
+    transform: rotateZ(360deg);
   }
-
   100% {
-    right: 0;
+    left: 0;
     transform: rotateZ(0deg);
   }
 }
@@ -293,17 +292,14 @@ section h2 + p {
 /* Perguntas frequentes */
 dl {
   width: 100%;
-  height: 50px;
+  height: auto;
   line-height: calc(50px - 2px);
-  cursor: pointer;
-}
-
-dl dt {
   border-bottom: 2px solid var(--_cor-borda);
+  cursor: pointer;
   overflow: hidden;
 }
 
-dt .fa-angle-up {
+dl .fa-angle-up {
   float: right;
   font-size: 1.125rem;
   line-height: calc(50px - 2px);
@@ -311,11 +307,11 @@ dt .fa-angle-up {
   transition: 0.2s ease-in;
 }
 
-dt.angulo .fa-angle-up {
+dl.angulo .fa-angle-up {
   transform: rotate(0deg);
 }
 
-dl > dd {
+dl dd {
   overflow-y: hidden;
   max-height: 0;
   opacity: 0;
@@ -323,11 +319,12 @@ dl > dd {
   transition: 0.2s ease-in;
 }
 
-dt.resposta + dd {
+dl.resposta dd {
   max-height: none;
   opacity: 1;
   transform: translateY(0);
   line-height: 1.2;
+  margin-bottom: 6px;
 }
 
 /* Experiência */
@@ -647,7 +644,7 @@ footer {
     animation-duration: .2s;
     animation-timing-function: ease-in;
     animation-iteration-count: 1;
-    animation-fill-mode:forwards;
+    animation-fill-mode: forwards;
   }
 
   button#hamburguer {
@@ -670,7 +667,8 @@ footer {
     transition: 0.2s ease-in;
   }
 
-  nav.fadeIn #logotipo, nav.fadeIn .etiqueta-item{
+  nav.fadeIn #logotipo,
+  nav.fadeIn .etiqueta-item {
     visibility: hidden;
     opacity: 0;
   }
@@ -690,7 +688,6 @@ footer {
     overflow-y: hidden;
     transform: translate3d(-260px, 0, 0);
     transition: 0.2s ease-in;
-    opacity: 0.9;
   }
 
   nav ul li {
