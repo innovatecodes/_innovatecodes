@@ -68,9 +68,13 @@ function menu(event) {
 
   if (Boolean(navegacao.className) === false && false == 0) {
     navegacao.classList.add("hamburguer-ativo");
+    hamburguer.classList.add("moverHamburguer");
+    navegacao.classList.add("fadeIn");
     attr.adicionarAttr(event);
   } else {
-    navegacao.classList.remove("hamburguer-ativo")
+    navegacao.classList.remove("hamburguer-ativo");
+    hamburguer.classList.remove("moverHamburguer");
+    navegacao.classList.remove("fadeIn");
     attr.removerAttr(event);
   }
 }
@@ -154,23 +158,32 @@ alterarModoTema.addEventListener("change", function () {
     alterarModoClaro();
   }
 
-  // Inverte a cor do background-image no responsivo se o tema for claro
-  const fundoClaro = document.querySelector("#fundo-animado");
-  raiz.classList.contains("modo-claro") ? fundoClaro.classList.add("inverter") : fundoClaro.classList.remove("inverter");
+  // alterar a cor dos seguintes elementos no responsivo se o tema for claro
+  const alterarFundoAnimado = document.getElementById("fundo-animado");
+  const alterarAbbr = document.getElementById("introducao");
+  raiz.classList.contains("modo-claro") ? alterarFundoAnimado.classList.add("inverter") : alterarFundoAnimado.classList.remove("inverter");
+  raiz.classList.contains("modo-claro") ? alterarAbbr.classList.add("inverter") : alterarAbbr.classList.remove("inverter");
 });
 
 // Perguntas frequentes...
-const ler = document.querySelectorAll("dl");
-const girarAngulo = "girarAngulo";
-const exibirResposta = "exibirResposta";
+let ler = document.getElementsByTagName("dt");
+ler = Array.from(ler);
+const angulo = "angulo";
+const resposta = "resposta";
 
 ler.forEach(function (elementoAtual) {
   elementoAtual.addEventListener("click", () => {
-    if (!elementoAtual.classList.contains(girarAngulo, exibirResposta)) {
-      elementoAtual.classList.add(girarAngulo, exibirResposta);
+    if (!elementoAtual.classList.contains(angulo, resposta)) {
+      elementoAtual.classList.add(angulo, resposta);
       elementoAtual.setAttribute(attr.expandido, attr._verdadeiro);
+      const dd = elementoAtual.nextElementSibling;
+      if (dd) {
+        dd.addEventListener("click", () => {
+          dd.previousElementSibling.classList.remove(angulo, resposta);
+        })
+      }
     } else {
-      elementoAtual.classList.remove(girarAngulo, exibirResposta);
+      elementoAtual.classList.remove(angulo, resposta);
       elementoAtual.setAttribute(attr.expandido, attr._falso);
     }
   })

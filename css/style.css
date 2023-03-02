@@ -22,6 +22,37 @@ nav {
   position: relative;
 }
 
+.favicon {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 10px;
+  width: calc(260px - 20px);
+  height: 35px;
+}
+
+.favicon img {
+  position: absolute;
+  width: auto;
+  height: inherit;
+  display: block;
+  aspect-ratio: 1/1;
+}
+
+@keyframes animar-logo {
+  0% {
+    left: 0;
+    transform: rotateZ(-360deg);
+  }
+
+  100% {
+    right: 0;
+    transform: rotateZ(0deg);
+  }
+}
+
 #hamburguer {
   display: none;
   outline: none;
@@ -261,17 +292,18 @@ section h2 + p {
 
 /* Perguntas frequentes */
 dl {
+  width: 100%;
   height: 50px;
   line-height: calc(50px - 2px);
   cursor: pointer;
-  border-bottom: 2px solid var(--_cor-borda);
 }
 
 dl dt {
-  float: left;
+  border-bottom: 2px solid var(--_cor-borda);
+  overflow: hidden;
 }
 
-dl .fa-angle-up {
+dt .fa-angle-up {
   float: right;
   font-size: 1.125rem;
   line-height: calc(50px - 2px);
@@ -279,11 +311,11 @@ dl .fa-angle-up {
   transition: 0.2s ease-in;
 }
 
-dl.girarAngulo .fa-angle-up {
+dt.angulo .fa-angle-up {
   transform: rotate(0deg);
 }
 
-dl dd {
+dl > dd {
   overflow-y: hidden;
   max-height: 0;
   opacity: 0;
@@ -291,11 +323,10 @@ dl dd {
   transition: 0.2s ease-in;
 }
 
-dl.exibirResposta dd {
+dt.resposta + dd {
   max-height: none;
   opacity: 1;
   transform: translateY(0);
-  padding-bottom: 6px;
   line-height: 1.2;
 }
 
@@ -519,21 +550,16 @@ footer {
 }
 
 .rodape #logotipo-rodape {
-  position: relative;
   float: right;
-  margin: 0 10px;
-  width: 134.31px;
-  height: 44.77px;
+  margin: 0 auto;
+  width: 44.77px;
 }
 
 .rodape #logotipo-rodape img {
-  position: absolute;
-  width: 44.77px;
+  width: inherit;
   height: auto;
   display: block;
   aspect-ratio: 1/1;
-  transition: 0.2s ease-in;
-  animation: animar-logo 1s ease-in infinite alternate-reverse;
 }
 
 .fa-angles-up {
@@ -543,18 +569,6 @@ footer {
   font-size: 2.25rem;
   transition: 0.2s ease-in;
   animation: animar-seta 0.4s ease-in-out infinite alternate;
-}
-
-@keyframes animar-logo {
-  0% {
-    left: 0;
-    transform: rotateZ(-360deg);
-  }
-
-  100% {
-    left: calc(100% - 44.77px);
-    transform: rotateZ(0deg);
-  }
 }
 
 .fa-angles-up {
@@ -623,8 +637,27 @@ footer {
     margin: 0;
   }
 
+  nav.fadeIn .favicon {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  nav.fadeIn .favicon img {
+    animation-name: animar-logo;
+    animation-duration: .2s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+  }
+
   button#hamburguer {
     display: block;
+    left: 10px;
+    transition: 0.2s ease-in;
+  }
+
+  button#hamburguer.moverHamburguer {
+    left: 260px;
   }
 
   nav #logotipo {
@@ -633,8 +666,15 @@ footer {
     top: 50%;
     transform: translate(-50%, -50%);
     margin-left: 0;
+    visibility: visible;
+    transition: 0.2s ease-in;
   }
-  
+
+  nav.fadeIn #logotipo, nav.fadeIn .etiqueta-item{
+    visibility: hidden;
+    opacity: 0;
+  }
+
   nav ul {
     float: none;
     clear: right;
@@ -713,11 +753,25 @@ footer {
 
   #fundo-animado {
     background: none;
+    background-color: var(--_cor-fundo);
   }
 
-  #fundo-animado.inverter::after {
-    -webkit-backdrop-filter: invert(80%);
-    backdrop-filter: invert(80%);
+  #fundo-animado::after {
+    background-image: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  #fundo-animado.inverter h1,
+  #fundo-animado.inverter h1::after,
+  #fundo-animado.inverter p {
+    color: var(--_cor);
+  }
+
+  #introducao.inverter abbr:nth-child(1),
+  #introducao.inverter abbr:nth-child(2),
+  #introducao.inverter abbr:nth-child(3) {
+    background-color: transparent;
   }
 
   .sobre,
