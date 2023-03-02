@@ -125,9 +125,9 @@ window.addEventListener("load", event => {
 })
 
 // Alterar tema...
-const alterarModoTema = document.getElementById("alterar-tema");
-const obterControle = document.querySelector(".fa-circle-half-stroke");
-const raiz = document.querySelector(":root");
+const tema = document.getElementById("tema");
+const controle = document.querySelector(".fa-circle-half-stroke");
+const root = document.querySelector(":root");
 
 if (sessionStorage.getItem("mode") == "dark") {
   alterarModoEscuro();
@@ -136,33 +136,33 @@ if (sessionStorage.getItem("mode") == "dark") {
 }
 
 function alterarModoEscuro() {
-  raiz.classList.add("modo-claro"); // Adiciona a classe no html - :root
-  alterarModoTema.checked = true; // Configura o checkbox para (true)
+  root.classList.add("modo-claro"); // Adiciona a classe no html - :root
+  tema.checked = true; // Configura o checkbox para (true)
   sessionStorage.setItem("mode", "dark"); // Armazena um nome e valor para saber que o modo escuro está ativo
-  obterControle.classList.add("mover-controle");
+  controle.classList.add("mover-controle");
 }
 
 function alterarModoClaro() {
-  raiz.classList.remove("modo-claro"); // Remove a classe no html - :root
-  alterarModoTema.checked = false; // Seta o checkbox para (false)
+  root.classList.remove("modo-claro"); // Remove a classe no html - :root
+  tema.checked = false; // Seta o checkbox para (false)
   sessionStorage.setItem("mode", "light"); // Armazena um nome e valor para saber que o modo claro está ativo
-  obterControle.classList.remove("mover-controle");
+  controle.classList.remove("mover-controle");
 }
 
 // Se o estado do checkbox for mudado, executa a função
-alterarModoTema.addEventListener("change", function () {
-  // Verifica se o checkbox está checado ou não
-  if (alterarModoTema.checked) {
+tema.addEventListener("change", function () {
+  // Se o checkbox estiver checado, altera o tema
+  if (tema.checked) {
     alterarModoEscuro();
   } else {
     alterarModoClaro();
   }
 
-  // alterar a cor dos seguintes elementos no responsivo se o tema for claro
+  // Altera a cor dos seguintes elementos no responsivo se o tema for claro
   const alterarFundoAnimado = document.getElementById("fundo-animado");
   const alterarAbbr = document.getElementById("introducao");
-  raiz.classList.contains("modo-claro") ? alterarFundoAnimado.classList.add("inverter") : alterarFundoAnimado.classList.remove("inverter");
-  raiz.classList.contains("modo-claro") ? alterarAbbr.classList.add("inverter") : alterarAbbr.classList.remove("inverter");
+  root.classList.contains("modo-claro") ? alterarFundoAnimado.classList.add("inverter") : alterarFundoAnimado.classList.remove("inverter");
+  root.classList.contains("modo-claro") ? alterarAbbr.classList.add("inverter") : alterarAbbr.classList.remove("inverter");
 });
 
 // Perguntas frequentes...
@@ -171,25 +171,32 @@ ler = Array.from(ler);
 const angulo = "angulo";
 const resposta = "resposta";
 
-ler.forEach(function (elementoAtual) {
-  elementoAtual.addEventListener("click", () => {
-    if (!elementoAtual.classList.contains(angulo, resposta)) {
-      elementoAtual.classList.add(angulo, resposta);
-      elementoAtual.setAttribute(attr.expandido, attr._verdadeiro);
-      const dd = elementoAtual.nextElementSibling;
-      if (dd) {
-        dd.addEventListener("click", () => {
-          dd.previousElementSibling.classList.remove(angulo, resposta);
-        })
-      }
-    } else {
-      elementoAtual.classList.remove(angulo, resposta);
-      elementoAtual.setAttribute(attr.expandido, attr._falso);
+ler.forEach(function (elemento) {
+  elemento.addEventListener("click", () => {
+    perguntasFrequentes(elemento);
+  });
+  elemento.addEventListener("keypress", (tecla) => {
+    if (tecla.key === "Enter") {
+      perguntasFrequentes(elemento);
     }
-  })
+  });
 });
+
+const perguntasFrequentes = function (dt) {
+  if (!dt.classList.contains(angulo, resposta)) {
+    dt.classList.add(angulo, resposta);
+    dt.setAttribute(attr.expandido, attr._verdadeiro);
+    const dd = dt.nextElementSibling;
+    if (dd) {
+      dd.addEventListener("click", () => {
+        dd.previousElementSibling.classList.remove(angulo, resposta);
+      })
+    }
+  } else {
+    dt.classList.remove(angulo, resposta);
+    dt.setAttribute(attr.expandido, attr._falso);
+  }
+}
 
 // Efeito parallax...
 const parallax = new Rellax(".parallax");
-
-

@@ -146,13 +146,13 @@ nav li a:hover::before {
   font-size: 1rem;
 }
 
-.etiqueta-item #alterar-tema {
+.etiqueta-item input#tema {
   -webkit-appearance: none;
   appearance: none;
   display: none;
 }
 
-#alterar-tema:checked + .fa-circle-half-stroke.mover-controle {
+input#tema:checked + .fa-circle-half-stroke.mover-controle {
   transform: translateX(24px);
   left: 0;
   right: 2px;
