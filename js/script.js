@@ -1,59 +1,37 @@
-// Debounce do Lodash...
-const debounce = function (func, wait, immediate) {
-  let timeout;
-  return function (...args) {
-    const context = this;
-    const later = function () {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-    const callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
-};
-
-// Animar ao fazer a rolagem suave...
+// Animar elementos ao rolar...
 const elementos = document.querySelectorAll("[data-animar]");
-const animar = "animar";
+const classeAnimar = "animar";
+// matchmedia() - Utilize um media-querie como no CSS para verificar a largura do browser
+const larguraMax = window.matchMedia("(max-width: 767.98px)");
 
-function animarRolagem() {
-  const windowTop = window.pageYOffset + (window.innerHeight * 3) / 4;
+function animarElementos() {
+  const topoJanela = window.pageYOffset + (window.innerHeight * 3) / 4;
 
   elementos.forEach(function (item) {
-    // matchmedia() - Utilize um media-querie como no CSS para verificar a largura do browser
-    let larguraMin = window.matchMedia("(min-width: 768px)");
-    let larguraMax = window.matchMedia("(max-width: 767.98px)");
 
-    if (larguraMin.matches) {
-      if (windowTop > item.offsetTop) {
-        item.classList.add(animar);
-      } else {
-        item.classList.remove(animar);
-      }
-    } else if (larguraMax.matches) {
+    if (larguraMax.matches) {
       item.style.transform = "translate3d(0,0,0)";
       item.style.opacity = "1";
+    } else {
+      if (topoJanela > item.offsetTop) {
+        item.classList.add(classeAnimar);
+      } else {
+        item.classList.remove(classeAnimar);
+      }
     }
   });
 }
 
-animarRolagem();
-
 if (elementos.length) {
-  window.addEventListener(
-    "scroll",
-    debounce(function () {
-      animarRolagem();
-    }, 120)
-  );
+  addEventListener("scroll", () => {
+    animarElementos();
+  })
 }
 
 // Efeito rolagem suave...
 function rolagemSuave() {
-  const obterHTML = document.querySelector("html");
-  const topo = obterHTML.offsetTop;
+  const html = document.querySelector("html");
+  const topo = html.offsetTop;
   // Posição do elemento em relação ao topo da página
   window.scrollTo({ top: topo, behavior: "smooth" });
   // Faz a rolagem suave até a posição do elemento
@@ -63,7 +41,6 @@ document.querySelector("#fa-angles-up").addEventListener("click", rolagemSuave);
 // Navegação interna primária...
 const navegacao = document.querySelector("header nav");
 const hamburguer = document.getElementById("hamburguer");
-
 const attr = {
   fechar: "Fechar menu",
   abrir: "Abrir menu",
@@ -73,14 +50,14 @@ const attr = {
   _falso: false,
   _verdadeiro: true,
   adicionarAttr() {
-    document.getElementById("hamburguer").setAttribute(attr.expandido, attr._verdadeiro);
-    document.getElementById("hamburguer").setAttribute(attr.pressionado, attr._verdadeiro);
-    document.getElementById("hamburguer").setAttribute(attr._etiqueta, attr.fechar);
+    hamburguer.setAttribute(attr.expandido, attr._verdadeiro);
+    hamburguer.setAttribute(attr.pressionado, attr._verdadeiro);
+    hamburguer.setAttribute(attr._etiqueta, attr.fechar);
   },
   removerAttr() {
-    document.getElementById("hamburguer").setAttribute(attr.expandido, attr._falso);
-    document.getElementById("hamburguer").setAttribute(attr.pressionado, attr._falso);
-    document.getElementById("hamburguer").setAttribute(attr._etiqueta, attr.abrir);
+    hamburguer.setAttribute(attr.expandido, attr._falso);
+    hamburguer.setAttribute(attr.pressionado, attr._falso);
+    hamburguer.setAttribute(attr._etiqueta, attr.abrir);
   }
 }
 
@@ -176,16 +153,28 @@ alterarModoTema.addEventListener("change", function () {
   } else {
     alterarModoClaro();
   }
+  const fundoClaro = document.querySelector("#fundo-animado");
+  raiz.classList.contains("modo-claro") ? fundoClaro.classList.add("inverter") : fundoClaro.classList.remove("inverter");
 });
 
 // Perguntas frequentes...
-const ler = document.querySelectorAll(".ler");
+const ler = document.querySelectorAll("dl");
+const classeGirarAngulo = "girarAngulo";
+const classeExibirResposta = "exibirResposta";
 
 ler.forEach(function (elementoAtual) {
-  elementoAtual.addEventListener("click", (event) => {
-    elementoAtual.classList.toggle("girarAngulo");
-    elementoAtual.classList.toggle("exibirResposta");
-  });
+  elementoAtual.addEventListener("click", () => {
+    if (!elementoAtual.classList.contains(classeGirarAngulo, classeExibirResposta)) {
+      elementoAtual.classList.add(classeGirarAngulo, classeExibirResposta);
+      elementoAtual.setAttribute(attr.expandido, attr._verdadeiro);
+    } else {
+      elementoAtual.classList.remove(classeGirarAngulo, classeExibirResposta);
+      elementoAtual.setAttribute(attr.expandido, attr._falso);
+    }
+  })
 });
+
+// Efeito parallax
+const parallax = new Rellax(".parallax");
 
 

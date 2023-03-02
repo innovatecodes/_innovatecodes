@@ -1,0 +1,33 @@
+.fixarFlutuacao {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.fixarElemento {
+  clear: both;
+}
+
+.alinhamentoCentral {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.planoFundoColorido {
+  /* Aplica background-image como fundo no título */
+  background-image: linear-gradient(
+    to bottom,
+    rgb(221, 75, 37),
+    rgb(0, 109, 180),
+    rgb(236, 197, 11)
+  );
+  color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -ms-background-clip: text;
+  -o-background-clip: text;
+  background-clip: text;
+  background-position: center center;
+}
