@@ -145,36 +145,38 @@ function alterarModoClaro() {
   obterControle.classList.remove("mover-controle");
 }
 
-//Se o estado do checkbox for mudado, executa a função
+// Se o estado do checkbox for mudado, executa a função
 alterarModoTema.addEventListener("change", function () {
-  //Verifica se o checkbox está checado ou não
+  // Verifica se o checkbox está checado ou não
   if (alterarModoTema.checked) {
     alterarModoEscuro();
   } else {
     alterarModoClaro();
   }
+
+  // Inverte a cor do background-image no responsivo se o tema for claro
   const fundoClaro = document.querySelector("#fundo-animado");
   raiz.classList.contains("modo-claro") ? fundoClaro.classList.add("inverter") : fundoClaro.classList.remove("inverter");
 });
 
 // Perguntas frequentes...
 const ler = document.querySelectorAll("dl");
-const classeGirarAngulo = "girarAngulo";
-const classeExibirResposta = "exibirResposta";
+const girarAngulo = "girarAngulo";
+const exibirResposta = "exibirResposta";
 
 ler.forEach(function (elementoAtual) {
   elementoAtual.addEventListener("click", () => {
-    if (!elementoAtual.classList.contains(classeGirarAngulo, classeExibirResposta)) {
-      elementoAtual.classList.add(classeGirarAngulo, classeExibirResposta);
+    if (!elementoAtual.classList.contains(girarAngulo, exibirResposta)) {
+      elementoAtual.classList.add(girarAngulo, exibirResposta);
       elementoAtual.setAttribute(attr.expandido, attr._verdadeiro);
     } else {
-      elementoAtual.classList.remove(classeGirarAngulo, classeExibirResposta);
+      elementoAtual.classList.remove(girarAngulo, exibirResposta);
       elementoAtual.setAttribute(attr.expandido, attr._falso);
     }
   })
 });
 
-// Efeito parallax
+// Efeito parallax...
 const parallax = new Rellax(".parallax");
 
 
