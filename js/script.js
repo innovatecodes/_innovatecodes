@@ -122,47 +122,50 @@ function ano() {
 }
 window.addEventListener("load", event => {
   ano();
-})
+});
 
 // Alterar tema...
-const tema = document.getElementById("tema");
-const controle = document.querySelector(".fa-circle-half-stroke");
+const input = document.querySelector("nav label");
 const root = document.querySelector(":root");
 
-if (sessionStorage.getItem("mode") == "dark") {
-  alterarModoEscuro();
-} else {
-  alterarModoClaro();
-}
-
-function alterarModoEscuro() {
-  root.classList.add("modo-claro"); // Adiciona a classe no html - :root
-  tema.checked = true; // Configura o checkbox para (true)
+function temaEscuro() {
+  root.classList.add("tema-escuro"); // Adiciona a classe no html - :root
+  input.checked = true; // Configura o checkbox para (true)
+  input.classList.add("controle")
   sessionStorage.setItem("mode", "dark"); // Armazena um nome e valor para saber que o modo escuro está ativo
-  controle.classList.add("mover-controle");
 }
 
-function alterarModoClaro() {
-  root.classList.remove("modo-claro"); // Remove a classe no html - :root
-  tema.checked = false; // Seta o checkbox para (false)
+function temaPrincipal() {
+  root.classList.remove("tema-escuro"); // Remove a classe no html - :root
+  input.checked = false; // Seta o checkbox para (false)
+  input.classList.remove("controle")
   sessionStorage.setItem("mode", "light"); // Armazena um nome e valor para saber que o modo claro está ativo
-  controle.classList.remove("mover-controle");
 }
 
-// Se o estado do checkbox for mudado, executa a função
-tema.addEventListener("change", function () {
-  // Se o checkbox estiver checado, altera o tema
-  if (tema.checked) {
-    alterarModoEscuro();
-  } else {
-    alterarModoClaro();
-  }
+if (sessionStorage.getItem("mode") == "light") {
+  temaPrincipal();
+} else {
+  temaEscuro();
+}
 
-  // Altera a cor dos seguintes elementos no responsivo se o tema for claro
-  const alterarFundoAnimado = document.getElementById("fundo-animado");
-  const alterarAbbr = document.getElementById("introducao");
-  root.classList.contains("modo-claro") ? alterarFundoAnimado.classList.add("inverter") : alterarFundoAnimado.classList.remove("inverter");
-  root.classList.contains("modo-claro") ? alterarAbbr.classList.add("inverter") : alterarAbbr.classList.remove("inverter");
+input.addEventListener("change", function (event) {
+  // No clique, verifica se o checkbox está checado e muda o tema
+  if (!event.currentTarget.checked) {
+    temaEscuro();
+  } else {
+    temaPrincipal();
+  }
+});
+
+input.addEventListener("keydown", function (event) {
+  // Ao pressionar uma tecla, verifica se o checkbox está checado e muda o tema
+  if (!event.currentTarget.checked) {
+    temaEscuro();
+    // Exibe no console o código da tecla pressionada
+    // console.log(`A tecla pressionada foi a ${event.keyCode}`);
+  } else {
+    temaPrincipal();
+  }
 });
 
 // Perguntas frequentes...
@@ -175,8 +178,8 @@ ler.forEach(function (elemento) {
   elemento.addEventListener("click", () => {
     perguntasFrequentes(elemento);
   });
-  elemento.addEventListener("keypress", (tecla) => {
-    if (tecla.key === "Enter") {
+  elemento.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
       perguntasFrequentes(elemento);
     }
   });
@@ -186,12 +189,6 @@ const perguntasFrequentes = function (elemento) {
   if (!elemento.classList.contains(angulo, resposta)) {
     elemento.classList.add(angulo, resposta);
     elemento.setAttribute(attr.expandido, attr._verdadeiro);
-    const dd = elemento.nextElementSibling;
-    if (dd) {
-      dd.addEventListener("click", () => {
-        dd.previousElementSibling.classList.remove(angulo, resposta);
-      })
-    }
   } else {
     elemento.classList.remove(angulo, resposta);
     elemento.setAttribute(attr.expandido, attr._falso);
@@ -200,3 +197,38 @@ const perguntasFrequentes = function (elemento) {
 
 // Efeito parallax...
 const parallax = new Rellax(".parallax");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

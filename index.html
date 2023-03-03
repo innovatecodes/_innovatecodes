@@ -23,32 +23,33 @@
   <meta name="author" content="Sam Souza">
   <meta name="robots" content="index,follow">
   <link rel="shortcut icon" href="favicon.ico">
-  <script src="https://kit.fontawesome.com/458bc1065f.js" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Ubuntu&family=Ubuntu+Condensed&display=swap"
-    rel="stylesheet">
+  <!-- <script src="https://kit.fontawesome.com/458bc1065f.js" crossorigin="anonymous"></script> -->
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Ubuntu&family=Ubuntu+Condensed&display=swap"
+    rel="stylesheet"> -->
+  <script type="text/javascript" src="js/font-awesome.js"></script>
+  <link rel="stylesheet" href="css/google-fonts.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
   <!-- Cabeçalho -->
   <header>
-    <nav id="navegacao-interna" aria-label="Navegação primária">
-      <div class="favicon">
-        <img src="images/innovate_codes-favicon.svg" alt="Ícone favorito">
-      </div>
-      <button type="button" id="hamburguer" aria-label="Abrir menu" aria-pressed="false" aria-haspopup="true"
-        aria-expanded="false" aria-controls="menu">
+    <nav aria-label="Navegação primária">
+      <button class="alinhamentoHorizontal" type="button" id="hamburguer" aria-label="Abrir menu" aria-pressed="false"
+        aria-haspopup="true" aria-expanded="false" aria-controls="menu">
         <span id="bar"></span>
       </button>
       <a id="logotipo" href="/" aria-label="Página inicial"><img src="images/innovate_codes-logo.svg" width="120"
           height="29.45" alt="Logotipo"></a>
-      <ul class="" id="menu" role="menu">
+      <ul id="menu" role="menu">
+        <li id="favicon"><img src="images/innovate_codes-favicon.svg" alt="Ícone favorito"></li>
         <li><a href="/"><i class="fa-solid fa-house"></i>Início</a></li>
         <li><a href="#sobre"><i class="fa-solid fa-circle-info"></i>Sobre</a></li>
         <li><a href="#experiencia"><i class="fa-solid fa-code"></i>Experiência</a></li>
-        <li><a href="#contato"><i class="fa-solid fa-envelope"></i>Contato</a></li>
+        <li><a id="ultimo-link" href="#contato"><i class="fa-solid fa-envelope"></i>Contato</a></li>
       </ul>
-      <label for="tema" class="etiqueta-item" tabindex="0">
+
+      <label class="alinhamentoHorizontal" for="tema" tabindex="0">
         <input type="checkbox" id="tema">
         <i class="fa-sharp fa-solid fa-circle-half-stroke"></i>
       </label>
@@ -58,7 +59,7 @@
   <main>
     <!-- Introdução -->
     <article id="fundo-animado" class="parallax" data-rellax-speed="-1">
-      <div class="alinhamentoCentral" id="introducao">
+      <div class="alinhamentoCentralizado" id="introducao">
         <h1 class="planoFundoColorido parallax" data-rellax-speed="2">Innovate codes desenvolvedor front-end</h1>
         <p class="parallax" data-rellax-speed="1">Inspirando novas ideias para tornar o seu site profissional e
           inovador, utilizando <abbr title="Hyper Text Markup Languages"><strong><br>HTML</strong></abbr>,

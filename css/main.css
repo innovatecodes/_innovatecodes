@@ -5,25 +5,27 @@ html {
 }
 
 :root {
-  --_cor: #fafafa;
-  --__cor: #ecf0f1;
-  --_cor-fundo: #343a40;
-  --__cor-fundo: #212529;
-  --_cor-borda: #4f5860;
-  --_cor-fundo-botao: #313e51;
-  --__cor-fundo-botao: #40556a;
-  --_cor-borda-botao: #bdcbd4;
-}
-
-.modo-claro:root {
   --_cor: #62676b;
   --__cor: #686d71;
   --_cor-fundo: #dee2e6;
+  --_cor-fundo-menu: #dcdcdc;
   --__cor-fundo: #f8f9fa;
   --_cor-borda: #adb5bd;
   --_cor-fundo-botao: #e7eaed;
   --__cor-fundo-botao: #eff1f3;
   --_cor-borda-botao: #a0a5a8;
+}
+
+.tema-escuro:root {
+  --_cor: #fafafa;
+  --__cor: #ecf0f1;
+  --_cor-fundo: #343a40;
+  --_cor-fundo-menu: #2c3035;
+  --__cor-fundo: #212529;
+  --_cor-borda: #4f5860;
+  --_cor-fundo-botao: #313e51;
+  --__cor-fundo-botao: #40556a;
+  --_cor-borda-botao: #bdcbd4;
 }
 
 body {
