@@ -51,12 +51,12 @@ nav ul li {
 }
 
 /* Começo */
-nav ul #favicon {
+#icone-favorito {
   visibility: hidden;
   opacity: 0;
 }
 
-nav ul #favicon img {
+#icone-favorito img {
   display: none;
 }
 /* Fim */
@@ -79,7 +79,7 @@ nav li a::before {
   display: block;
   position: absolute;
   left: 0;
-  font-size: 0.9375rem;
+  font-size: 0.8375rem;
   opacity: 0;
   transition: 0.2s ease-in;
 }
@@ -101,6 +101,7 @@ nav label {
   border-radius: 19px;
   border: 2px solid var(--_cor-borda-botao);
   overflow: hidden;
+  cursor: pointer;
 }
 
 .fa-circle-half-stroke {
@@ -123,11 +124,6 @@ nav label.controle .fa-circle-half-stroke {
   transform: translateX(24px);
   left: 0;
   right: 2px;
-}
-
-/* Principal */
-main {
-  padding-top: 61px;
 }
 
 /* Introdução */
@@ -164,7 +160,7 @@ main {
   min-width: 360px;
   text-align: center;
   padding: 71px 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 #introducao h1 + p {
@@ -391,7 +387,7 @@ dl.resposta dd {
   margin-bottom: 15px;
   border-radius: 4px;
   font-family: "Lato", sans-serif;
-  letter-spacing: 1px;
+  letter-spacing: 0.85px;
   line-height: calc(48px - 4px);
   color: currentColor;
   border: 2px solid var(--_cor-borda-botao);
@@ -409,7 +405,7 @@ dl.resposta dd {
   content: "➨";
   display: block;
   position: absolute;
-  font-size: 0.9375rem;
+  font-size: 0.8375rem;
   left: 10px;
   opacity: 0;
   transition: 0.2s ease-in;
@@ -596,18 +592,17 @@ footer {
   button#hamburguer {
     display: block;
     width: 35px;
-    padding: 4px;
     height: 35px;
     left: 10px;
     color: currentColor;
     background-color: inherit;
     outline: none;
-    border: 2px solid currentColor;
+    border: none;
     transition: 0.2s ease-in;
   }
 
-  button#hamburguer.moverHamburguer {
-    left: 270px;
+  button#hamburguer.mover {
+    left: 260px;
   }
 
   nav #logotipo {
@@ -633,13 +628,14 @@ footer {
     position: fixed;
     top: 0;
     left: 0;
-    width: 260px;
+    z-index: 4;
+    max-width: 260px; 
     max-height: 100%;
     min-height: 100vh;
     background-color: var(--_cor-fundo-menu);
     visibility: hidden;
     overflow-y: hidden;
-    transform: translate3d(-260px, 0, 0);
+    transform: translate3d(-100%, 0, 0);
     transition: 0.2s ease-in;
   }
 
@@ -652,6 +648,13 @@ footer {
     content: none;
   }
 
+  nav ul li:first-child{
+    width: 100%;
+    height: 61px;
+    display: table;
+    border-bottom: 2px solid var(--_cor-borda);
+  }
+
   nav ul li a:not(#ultimo-link)::after {
     content: "";
     display: block;
@@ -659,42 +662,36 @@ footer {
   }
 
   /* Começo */
-  nav.fadeIn ul #favicon {
+  nav.fadeIn #menu li #icone-favorito {
     visibility: visible;
     opacity: 1;
-    width: 100%;
-    height: auto;
+    width: 260px;
+    height: 35px;
   }
 
-  #favicon::after {
-    content: "";
-    display: block;
-    border-bottom: 2px solid var(--_cor-borda);
-  }
-
-  nav.fadeIn ul #favicon img {
-    position: relative;
-    width: auto;
-    height: 59px;
-    display: block;
-    /* left: calc(260px - 59px); */
+  nav.fadeIn #menu li #icone-favorito img {
     aspect-ratio: 1/1;
     animation-name: animar-logo;
-    animation-duration: 0.2s;
+    animation-duration: .2s;
     animation-timing-function: ease-in;
-    animation-delay: 0.2s;
+    animation-delay: .2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
+    display: block;
+    width: auto;
+    height: inherit;
+    position: relative;
+    left: calc(260px - 35px);
   }
 
   @keyframes animar-logo {
     from {
-      left: calc(260px - 59px);
-      transform: rotateZ(360deg);
+      left: calc(260px - 35px);
+      transform: rotate(360deg);
     }
     to {
       left: 0;
-      transform: rotateZ(0deg);
+      transform: rotate(0deg);
     }
   }
   /* Fim */
@@ -721,21 +718,21 @@ footer {
     transition: 0.2s ease-in;
   }
 
-  nav.hamburguer-ativo ul {
+  nav.ativo ul {
     visibility: visible;
     overflow-y: auto;
     transform: translate3d(0, 0, 0);
   }
 
-  nav.hamburguer-ativo #bar {
+  nav.ativo #bar {
     border-top-color: transparent;
   }
 
-  nav.hamburguer-ativo #bar::before {
+  nav.ativo #bar::before {
     transform: rotate(-135deg);
   }
 
-  nav.hamburguer-ativo #bar::after {
+  nav.ativo #bar::after {
     transform: rotate(135deg);
     position: relative;
     top: -8px;
@@ -745,9 +742,9 @@ footer {
     background-position: left center;
   }
 
-  #fundo-animado::after {
+  #fundo-animado.ajustarBrilho::after{
     -webkit-backdrop-filter: brightness(65%);
-    backdrop-filter: brightness(65%);
+      backdrop-filter: brightness(65%);
   }
 
   #introducao abbr:nth-child(1),

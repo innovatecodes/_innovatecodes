@@ -4,7 +4,7 @@ html {
   /* Habilita rolagem suave -> chrome://flags */
 }
 
-:root {
+html{
   --_cor: #62676b;
   --__cor: #686d71;
   --_cor-fundo: #dee2e6;
@@ -16,23 +16,12 @@ html {
   --_cor-borda-botao: #a0a5a8;
 }
 
-.tema-escuro:root {
-  --_cor: #fafafa;
-  --__cor: #ecf0f1;
-  --_cor-fundo: #343a40;
-  --_cor-fundo-menu: #2c3035;
-  --__cor-fundo: #212529;
-  --_cor-borda: #4f5860;
-  --_cor-fundo-botao: #313e51;
-  --__cor-fundo-botao: #40556a;
-  --_cor-borda-botao: #bdcbd4;
-}
-
 body {
   overflow-x: hidden;
   font-family: "Lato", sans-serif;
-  letter-spacing: 1px;
-  /* padding-top: 61px; */
+  letter-spacing: 0.85px;
+  /* Adiciona uma margem interna no body da altura do menu */
+  padding-top: 61px;
   background-color: var(--_cor-fundo);
   color: var(--_cor);
   min-height: 100vh;

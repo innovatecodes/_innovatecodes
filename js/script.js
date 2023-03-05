@@ -1,23 +1,14 @@
 // Animar elementos ao rolar...
 const elementos = document.querySelectorAll("[data-animar]");
 const classeAnimar = "animar";
-// matchmedia() - Utilize um media-querie como no CSS para verificar a largura do browser
-const larguraMax = window.matchMedia("(max-width: 767.98px)");
 
 function animarElementos() {
   const topoJanela = window.pageYOffset + (window.innerHeight * 3) / 4;
-
   elementos.forEach(function (item) {
-
-    if (larguraMax.matches) {
-      item.style.transform = "translate3d(0,0,0)";
-      item.style.opacity = "1";
+    if (topoJanela > item.offsetTop) {
+      item.classList.add(classeAnimar);
     } else {
-      if (topoJanela > item.offsetTop) {
-        item.classList.add(classeAnimar);
-      } else {
-        item.classList.remove(classeAnimar);
-      }
+      item.classList.remove(classeAnimar);
     }
   });
 }
@@ -61,28 +52,57 @@ const attr = {
   }
 }
 
+function adicionar() {
+  navegacao.classList.add("ativo");
+  hamburguer.classList.add("mover");
+  navegacao.classList.add("fadeIn");
+  document.getElementById("sobrepor").classList.add("sobrepor");
+}
+
+function remover() {
+  navegacao.classList.remove("ativo");
+  hamburguer.classList.remove("mover");
+  navegacao.classList.remove("fadeIn");
+  document.getElementById("sobrepor").classList.remove("sobrepor");
+}
+
 function menu(event) {
   if (event.type === "touchstart") {
     event.preventDefault(event);
   }
 
   if (Boolean(navegacao.className) === false && false == 0) {
-    navegacao.classList.add("hamburguer-ativo");
-    hamburguer.classList.add("moverHamburguer");
-    navegacao.classList.add("fadeIn");
+    adicionar();
     attr.adicionarAttr(event);
   } else {
-    navegacao.classList.remove("hamburguer-ativo");
-    hamburguer.classList.remove("moverHamburguer");
-    navegacao.classList.remove("fadeIn");
+    remover();
     attr.removerAttr(event);
   }
 }
 document.getElementById("hamburguer").addEventListener("click", menu);
 document.getElementById("hamburguer").addEventListener("touchstart", menu);
 
+// Se um evento de clique for detectado fora do menu, ele será fechado
+document.addEventListener("click", function (event) {
+  if (!document.getElementById("menu").contains(event.target) && !hamburguer.contains(event.target) && navegacao.classList.contains("ativo")) {
+    remover();
+  }
+});
+
+// Se um evento de scroll for detectado fora do menu, ele será fechado
+window.addEventListener("scroll", function (event) {
+  if (!document.getElementById("menu").contains(event.target)) {
+    remover();
+  }
+});
+
+// Previne que a página seja recarregada ao fazer um movimento sobre a tela caso o menu esteja aberto
+document.getElementById("menu").addEventListener("touchmove", function (event) {
+  event.preventDefault();
+});
+
 // Fechar navegação ao clicar no link...
-let links = document.querySelectorAll("a[href$='/'], a[href^='#'");
+let links = document.querySelectorAll("a[href^='#'");
 // Converte HTMLCollectionOf para Array
 links = Array.from(links);
 
@@ -128,6 +148,12 @@ window.addEventListener("load", event => {
 const input = document.querySelector("nav label");
 const root = document.querySelector(":root");
 
+if (sessionStorage.getItem("mode") === "dark") {
+  temaEscuro();
+} else {
+  temaPrincipal();
+}
+
 function temaEscuro() {
   root.classList.add("tema-escuro"); // Adiciona a classe no html - :root
   input.checked = true; // Configura o checkbox para (true)
@@ -142,15 +168,9 @@ function temaPrincipal() {
   sessionStorage.setItem("mode", "light"); // Armazena um nome e valor para saber que o modo claro está ativo
 }
 
-if (sessionStorage.getItem("mode") == "light") {
-  temaPrincipal();
-} else {
-  temaEscuro();
-}
-
 input.addEventListener("change", function (event) {
   // No clique, verifica se o checkbox está checado e muda o tema
-  if (!event.currentTarget.checked) {
+  if (event.target.checked) {
     temaEscuro();
   } else {
     temaPrincipal();
@@ -158,8 +178,8 @@ input.addEventListener("change", function (event) {
 });
 
 input.addEventListener("keydown", function (event) {
-  // Ao pressionar uma tecla, verifica se o checkbox está checado e muda o tema
-  if (!event.currentTarget.checked) {
+  // Ao pressionar uma tecla, se o checkbox não estiver chegado, o ! irá retornar true, e o tema será mudado
+  if (!event.target.checked) {
     temaEscuro();
     // Exibe no console o código da tecla pressionada
     // console.log(`A tecla pressionada foi a ${event.keyCode}`);
@@ -174,7 +194,7 @@ ler = Array.from(ler);
 const angulo = "angulo";
 const resposta = "resposta";
 
-ler.forEach(function (elemento) {
+ler.forEach(function (elemento, event) {
   elemento.addEventListener("click", () => {
     perguntasFrequentes(elemento);
   });
@@ -198,37 +218,8 @@ const perguntasFrequentes = function (elemento) {
 // Efeito parallax...
 const parallax = new Rellax(".parallax");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// matchmedia() - Utilize um media-querie como no CSS para verificar a largura do browser
+const larguraMax = window.matchMedia("(max-width: 767.98px)");
+if(larguraMax.matches){
+  document.getElementById("fundo-animado").classList.toggle("ajustarBrilho");
+}
