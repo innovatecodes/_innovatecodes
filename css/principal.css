@@ -1,0 +1,37 @@
+main > div:nth-of-type(odd) {
+  /* Divs ímpares */
+  background-color: var(--__cor-fundo);
+}
+
+main > div:nth-of-type(even) {
+  /* Div par */
+  background-color: inherit;
+}
+
+section {
+  padding: 71px 0;
+  max-width: 960px;
+  margin: 0 auto;
+  background-color: transparent;
+}
+
+section h2:only-of-type {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+section h2::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background-color: currentColor;
+  margin: 15px auto;
+}
+
+section h2 + p {
+  max-width: 540px;
+  margin: 0 auto 15px auto;
+  text-align: center;
+  padding: 0 15px;
+}

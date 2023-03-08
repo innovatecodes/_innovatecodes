@@ -1,10 +1,4 @@
 html {
-  font-size: 100%;
-  scroll-behavior: smooth;
-  /* Habilita rolagem suave -> chrome://flags */
-}
-
-html{
   --_cor: #62676b;
   --__cor: #686d71;
   --_cor-fundo: #dee2e6;
@@ -14,6 +8,10 @@ html{
   --_cor-fundo-botao: #e7eaed;
   --__cor-fundo-botao: #eff1f3;
   --_cor-borda-botao: #a0a5a8;
+  font-size: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  /* Habilita rolagem suave -> chrome://flags */
 }
 
 body {

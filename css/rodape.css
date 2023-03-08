@@ -1,0 +1,94 @@
+/* Rodapé */
+footer {
+  background-color: inherit;
+  position: relative;
+}
+
+.rodape {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 7.5px 0;
+}
+
+.redes-sociais {
+  margin: 0 10px;
+  line-height: 50px;
+  height: 50px;
+}
+
+.redes-sociais a {
+  display: inline-block;
+  transition: 0.2s ease-in;
+  background-color: var(--_cor-fundo-botao);
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.redes-sociais a:not(:last-of-type) {
+  margin-right: 7.5px;
+}
+
+.redes-sociais a:hover {
+  color: var(--__cor);
+  transform: scale(1.1);
+}
+
+.rodape hr {
+  margin: 15px 10px;
+  border-color: transparent;
+  height: 2px;
+  background-color: var(--_cor-borda);
+}
+
+.rodape::before,
+.rodape::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.rodape .informacoes-rodape {
+  float: left;
+  margin: 0 10px;
+}
+
+.rodape #logotipo-rodape {
+  float: right;
+  margin: 0 auto;
+  width: 44.77px;
+}
+
+.rodape #logotipo-rodape img {
+  width: inherit;
+  height: auto;
+  display: block;
+  aspect-ratio: 1/1;
+}
+
+.fa-angles-up {
+  position: absolute;
+  top: -25px;
+  right: 10px;
+  font-size: 2.25rem;
+  transition: 0.2s ease-in;
+  animation: animar-angulo 0.4s ease-in infinite alternate;
+}
+
+.fa-angles-up:hover {
+  color: var(--__cor);
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+@keyframes animar-angulo {
+  from {
+    top: -5px;
+  }
+
+  to {
+    top: 5px;
+  }
+}

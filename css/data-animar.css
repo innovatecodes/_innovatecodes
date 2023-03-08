@@ -1,0 +1,25 @@
+[data-animar] {
+  opacity: 0;
+  transition: 0.24s ease-in;
+}
+
+[data-animar="eixoY-superior"] {
+  transform: translate3d(0, -15px, 0);
+}
+
+[data-animar="eixoX-direito"] {
+  transform: translate3d(15px, 0, 0);
+}
+
+[data-animar="eixoY-inferior"] {
+  transform: translate3d(0, 15px, 0);
+}
+[data-animar="eixoX-esquerdo"] {
+  transform: translate3d(-15px, 0, 0);
+}
+
+[data-animar].animar {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}

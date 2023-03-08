@@ -1,0 +1,37 @@
+# Ativa o módulo mod_rewrite
+RewriteEngine On
+
+# Redireciona todas as solicitações HTTP para HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# # Oculta a extensão .php dos URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [NC,L]
+
+# # Oculta a extensão .html dos URLs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+# Roteamento de URLs amigáveis ​​para SEO
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+# Define a página de erro 404 personalizada
+ErrorDocument 404 /erro-404.php
+
+# Se o arquivo solicitado existe como arquivo HTML, execute-o como PHP
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_URI}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# Defina o tipo de arquivo correto para arquivos HTML que serão executados como PHP
+AddHandler application/x-httpd-php .html
+AddType application/x-httpd-php .html
+
+<FilesMatch "\.(htm|html|php)$">
+SetHandler application/x-httpd-php
+</FilesMatch>

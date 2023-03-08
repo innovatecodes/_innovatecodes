@@ -8,7 +8,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-WSR5KTX2C5');
   </script>
   <meta charset="UTF-8">
@@ -208,21 +207,22 @@
         <p>Tire suas dúvidas para mais informações.<br> Geralmente respondo de segunda a sexta das 8h às 17h.
         </p>
         <article class="fixarFlutuacao">
-          <form class="formulario-contato" method="post" action="https://api.staticforms.xyz/submit">
+          <form class="formulario-contato" method="post" action="php/enviar.php">
+            <!-- action="https://api.staticforms.xyz/submit" -->
             <fieldset>
               <legend>
                 <h3>Preencha o formulário</h3>
               </legend>
-              <input type="hidden" name="accessKey" value="f2a81874-7b54-4b86-af52-ae93ab5f30a4">
-              <input type="hidden" name="redirectTo" value="https://innovatecodes.com">
-              <label for="name">Nome</label>
-              <input type="text" id="name" name="name" placeholder="Insira seu nome" required>
+              <!-- <input type="hidden" name="accessKey" value="f2a81874-7b54-4b86-af52-ae93ab5f30a4">
+              <input type="hidden" name="redirectTo" value="https://innovatecodes.com"> -->
+              <label for="nome">Nome</label>
+              <input type="text" id="name" name="nome" placeholder="Insira seu nome" required>
               <label for="email">E-mail</label>
               <input type="email" id="email" name="email" placeholder="Insira seu e-mail" required>
-              <label for="message">Mensagem</label>
-              <textarea id="message" name="message" rows="8" cols="50" maxlength="500" placeholder="Insira sua mensagem"
+              <label for="mensagem">Mensagem</label>
+              <textarea id="message" name="mensagem" rows="8" cols="50" maxlength="500" placeholder="Insira sua mensagem"
                 required></textarea>
-              <button id="enviar" name="message" type="submit">Enviar</button>
+              <button id="enviar" name="enviar" type="submit">Enviar</button>
             </fieldset>
           </form>
           <div class="localizacao">

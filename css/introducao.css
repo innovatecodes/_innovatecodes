@@ -1,0 +1,56 @@
+/* Introdução */
+#fundo-animado {
+  position: relative;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 0 15px;
+  background: url("../images/innovate_codes-papel-de-parede-3000x2000.png")
+    no-repeat center 50%;
+  background-size: cover;
+}
+
+#fundo-animado::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: linear-gradient(
+    to top,
+    rgba(221, 75, 37, 0.1),
+    rgba(236, 197, 11, 0.2),
+    rgba(0, 109, 180, 0.3)
+  );
+  -webkit-backdrop-filter: grayscale(90%);
+  backdrop-filter: grayscale(90%);
+}
+
+#introducao {
+  max-width: 580px;
+  min-width: 360px;
+  text-align: center;
+  padding: 71px 0;
+  z-index: 2;
+}
+
+#introducao h1 + p {
+  color: #fafafa;
+  font-size: 1.25rem;
+}
+
+#introducao p abbr:nth-child(1) {
+  color: #dd4b25;
+  background-color: rgba(250, 250, 250, 0.8);
+}
+
+#introducao p abbr:nth-child(2) {
+  color: #006db4;
+  background-color: rgba(250, 250, 250, 0.8);
+}
+
+#introducao p abbr:nth-child(3) {
+  color: #ecc50b;
+  background-color: rgba(250, 250, 250, 0.8);
+}

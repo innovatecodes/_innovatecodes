@@ -1,0 +1,42 @@
+/* Experiência */
+.experiencia article .itens-servicos {
+  width: calc(320px - 20px);
+  margin: 0 10px 15px 10px;
+  float: left;
+}
+
+.experiencia article .itens-servicos h3 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.experiencia article .itens-servicos h3::before {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  border: 2px solid var(--_cor-fundo);
+  box-shadow: 0 0 0 3px currentColor;
+  margin: 3px auto 15px auto;
+  background-color: currentColor;
+}
+
+.experiencia article .itens-servicos:nth-of-type(1) h3 {
+  color: #dd4b25;
+}
+
+.experiencia article .itens-servicos:nth-of-type(2) h3 {
+  color: #006db4;
+}
+
+.experiencia article .itens-servicos:nth-of-type(3) h3 {
+  color: #ecc50b;
+}
+
+.experiencia article .itens-servicos picture {
+  float: left;
+  margin-right: 7.5px;
+  padding: 7.5px;
+  box-shadow: 5px 2px 6px rgba(10, 10, 10, 0.3);
+}
